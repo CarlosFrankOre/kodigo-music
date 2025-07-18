@@ -1,103 +1,89 @@
-import Image from "next/image";
+import React from 'react';
+import Head from 'next/head';
+import Layout from './components/Layout';
+import MusicCard from './components/MusicCard';
+import Image from 'next/image';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // Datos de ejemplo para las tarjetas de música
+  const featuredReleases = [
+    {
+      title: 'Melodías del Amanecer',
+      artist: 'Aura Sonora',
+      imageUrl: 'https://res.cloudinary.com/ddl6vwk0i/image/upload/v1752686948/album1_m1yxii.jpg', // Asegúrate de tener estas imágenes en tu carpeta public/images
+      releaseDate: '2025-06-15',
+      link: '#',
+    },
+    {
+      title: 'Ritmos Nocturnos',
+      artist: 'DJ Beatmaster',
+      imageUrl: 'https://res.cloudinary.com/ddl6vwk0i/image/upload/v1752686955/album2_snia3m.png',
+      releaseDate: '2025-07-01',
+      link: '#',
+    },
+    {
+      title: 'Armonía Eterna',
+      artist: 'Luna Creciente',
+      imageUrl: 'https://res.cloudinary.com/ddl6vwk0i/image/upload/v1752686954/album3_hjdvhr.png',
+      releaseDate: '2025-07-10',
+      link: '#',
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <Layout>
+      <Head>
+        <title>Inicio - Melodía Records</title>
+        <meta name="description" content="Descubre los últimos lanzamientos y artistas destacados de Melodía Records." />
+      </Head>
+
+      {/* Hero Section */}
+      <section className="relative h-96 md:h-[500px] lg:h-[600px] w-full flex items-center justify-center text-center mb-16 rounded-xl overflow-hidden shadow-2xl">
+        <Image
+          src="https://res.cloudinary.com/ddl6vwk0i/image/upload/v1752688449/hero-bg_qoibk2.jpg"
+          alt="Concierto de música en vivo"
+          layout="fill"
+          objectFit="cover"
+          priority
+          className="brightness-50"
+        />
+        <div className="relative z-10 p-4">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4 animate-fade-in-up">
+            Tu Sinfonía Comienza Aquí
+          </h1>
+          <p className="text-lg md:text-xl text-gray-200 mb-8 animate-fade-in-up delay-200">
+            Explora un mundo de sonidos y descubre tu próxima obsesión musical.
+          </p>
+          <button className="bg-accent-purple text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-accent-pink transition-all duration-300 transform hover:scale-105 animate-fade-in-up delay-400">
+            Descubre Más
+          </button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Latest Releases Section */}
+      <section className="my-16">
+        <h2 className="text-4xl font-bold text-center text-accent-purple mb-10">Últimos Lanzamientos 🚀</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuredReleases.map((release, index) => (
+            <MusicCard
+              key={index}
+              title={release.title}
+              artist={release.artist}
+              imageUrl={release.imageUrl}
+              releaseDate={release.releaseDate}
+              slug={release.link}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* About Section (Opcional, para dar más contenido a la home) */}
+      <section className="my-16 bg-secondary-dark p-8 rounded-lg shadow-xl border border-gray-700 ">
+        <h2 className="text-3xl font-bold text-center text-accent-pink mb-6">Sobre Kódigo Music</h2>
+        <p className="text-lg text-text-gray text-center max-w-2xl mx-auto leading-relaxed">
+          En Kódigo Music, nos dedicamos a descubrir y promover el talento musical emergente y establecido. Creemos en el poder de la música para conectar almas y transformar experiencias. Únete a nuestra comunidad y sé parte del futuro de la música.
+        </p>
+      </section>
+    </Layout>
   );
 }
